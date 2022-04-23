@@ -246,6 +246,14 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   position: relative;
 }
+._def_btn {
+  background: #0563bb;
+  border: 0;
+  padding: 10px 35px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
 @media (min-width: 992px) {
   #hero {
     padding-left: 160px;
