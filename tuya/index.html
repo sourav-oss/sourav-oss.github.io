@@ -14,6 +14,8 @@
 </head>
 <body>
 
+	<canvas id="canvas"></canvas>
+
 	<div class="_startMsg">
 		 <div class="bg"></div>
         <div class="content">
@@ -28,6 +30,7 @@
 	</div>	
 
 	<div class="main_gift" style="display: none;">
+		
 		<div class="lighting lgt1">
 			<div class="bulb-holder">
 				<div class="bulb bulb_yellow"></div>
@@ -82,11 +85,28 @@
 		        </div>
 		        <div class="wishes">
 		            <p>Dear Puchi 🌹,</p>
-		            <p>Happy birthday!!🥳 I hope your day is filled with lots of love & laughter. May all of your birthday wishes come true. <br>I am brimming with pride for having such a beautiful & wonderful woman as strong, charming & courageous as you by my side. I got really lucky to have you in my life. <br>Happy birthday to you darling. <br>Stay Happy, Stay Blessed. 😇</p>
+		            <p>Happy birthday!!🥳 I hope your day is filled with lots of love & laughter. May all of your birthday wishes come true. <br>I am brimming with pride for having such a beautiful & wonderful woman as strong, charming & courageous as you by my side. I got really lucky to have you in my life. <br>Happy birthday darling. <br>Stay Happy, Stay Blessed. 😇</p>
 		            <p class="name">❤️ Your Puchi</p>
 		        </div>
 		    </div>
 		</div>
+
+		<div class="firework-1"></div>
+		<div class="firework-2"></div>
+		<div class="firework-3"></div>
+		<div class="firework-4"></div>
+		<div class="firework-5"></div>
+		<div class="firework-6"></div>
+		<div class="firework-7"></div>
+		<div class="firework-8"></div>
+		<div class="firework-9"></div>
+		<div class="firework-10"></div>
+		<div class="firework-11"></div>
+		<div class="firework-12"></div>
+		<div class="firework-13"></div>
+		<div class="firework-14"></div>
+		<div class="firework-15"></div>
+		<div class="title">Congratulations 🎉</div>
 
 		<div class="lighting lgt2">
 			<div class="bulb-holder">
@@ -189,7 +209,129 @@ $('.hbd_banner').on('click', function(){
             return false;
         }
     }
-  </script>
+</script>
+
+<script>
+	window.addEventListener("resize", resizeCanvas, false);
+	window.addEventListener("DOMContentLoaded", onLoad, false);
+
+	window.requestAnimationFrame = 
+	    window.requestAnimationFrame       || 
+	    window.webkitRequestAnimationFrame || 
+	    window.mozRequestAnimationFrame    || 
+	    window.oRequestAnimationFrame      || 
+	    window.msRequestAnimationFrame     || 
+	    function (callback) {
+	        window.setTimeout(callback, 1000/60);
+	    };
+
+	var canvas, ctx, w, h, particles = [], probability = 0.04,
+	    xPoint, yPoint;
+
+	function onLoad() {
+	    canvas = document.getElementById("canvas");
+	    ctx = canvas.getContext("2d");
+	    resizeCanvas();
+	    
+	    window.requestAnimationFrame(updateWorld);
+	} 
+
+	function resizeCanvas() {
+	    if (!!canvas) {
+	        w = canvas.width = window.innerWidth;
+	        h = canvas.height = window.innerHeight;
+	    }
+	} 
+
+	function updateWorld() {
+	    update();
+	    paint();
+	    window.requestAnimationFrame(updateWorld);
+	} 
+
+	function update() {
+	    if (particles.length < 500 && Math.random() < probability) {
+	        createFirework();
+	    }
+	    var alive = [];
+	    for (var i=0; i<particles.length; i++) {
+	        if (particles[i].move()) {
+	            alive.push(particles[i]);
+	        }
+	    }
+	    particles = alive;
+	} 
+
+	function paint() {
+	    ctx.globalCompositeOperation = 'source-over';
+	    ctx.fillStyle = "rgba(0,0,0,0.2)";
+	    ctx.fillRect(0, 0, w, h);
+	    ctx.globalCompositeOperation = 'lighter';
+	    for (var i=0; i<particles.length; i++) {
+	        particles[i].draw(ctx);
+	    }
+	} 
+
+	function createFirework() {
+	    xPoint = Math.random()*(w-200)+100;
+	    yPoint = Math.random()*(h-200)+100;
+	    var nFire = Math.random()*50+100;
+	    var c = "rgb("+(~~(Math.random()*200+55))+","
+	         +(~~(Math.random()*200+55))+","+(~~(Math.random()*200+55))+")";
+	    for (var i=0; i<nFire; i++) {
+	        var particle = new Particle();
+	        particle.color = c;
+	        var vy = Math.sqrt(25-particle.vx*particle.vx);
+	        if (Math.abs(particle.vy) > vy) {
+	            particle.vy = particle.vy>0 ? vy: -vy;
+	        }
+	        particles.push(particle);
+	    }
+	} 
+
+	function Particle() {
+	    this.w = this.h = Math.random()*4+1;
+	    
+	    this.x = xPoint-this.w/2;
+	    this.y = yPoint-this.h/2;
+	    
+	    this.vx = (Math.random()-0.5)*10;
+	    this.vy = (Math.random()-0.5)*10;
+	    
+	    this.alpha = Math.random()*.5+.5;
+	    
+	    this.color;
+	} 
+
+	Particle.prototype = {
+	    gravity: 0.05,
+	    move: function () {
+	        this.x += this.vx;
+	        this.vy += this.gravity;
+	        this.y += this.vy;
+	        this.alpha -= 0.01;
+	        if (this.x <= -this.w || this.x >= screen.width ||
+	            this.y >= screen.height ||
+	            this.alpha <= 0) {
+	                return false;
+	        }
+	        return true;
+	    },
+	    draw: function (c) {
+	        c.save();
+	        c.beginPath();
+	        
+	        c.translate(this.x+this.w/2, this.y+this.h/2);
+	        c.arc(0, 0, this.w, 0, Math.PI*2);
+	        c.fillStyle = this.color;
+	        c.globalAlpha = this.alpha;
+	        
+	        c.closePath();
+	        c.fill();
+	        c.restore();
+	    }
+	} 
+</script>
 
 </body>
 </html>

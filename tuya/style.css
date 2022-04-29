@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Monoton|Caveat|);
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 body {
 	margin: 0;
@@ -17,27 +18,34 @@ audio {
 
 .main_gift {
 	top: 0;
+	z-index: 1;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
 	width: 100vw;
 	position: absolute;
-	background-color: #00bbf9;
-    background: linear-gradient(90deg, black, #00bbf9, black);
+	/*background-color: #00bbf9;
+	background: linear-gradient(90deg, black, #00bbf9, black);*/
+}
+
+canvas#canvas {
+    position: absolute;
+    z-index: 1;
+    background: transparent;
 }
 
 button._tri_btn {
 	cursor: pointer;
 	padding: 10px;
 	font-size: 32px;
-    font-family: 'Caveat';
-    cursor: pointer;
-    text-align: center;
-    border: none;
-    color: #b30059;
-    background: transparent;
-	/*background-image: linear-gradient(to right, white, rgba(255, 255, 255, 0.5) 70%, transparent);*/
+	font-family: 'Caveat';
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	color: #b30059;
+	background: transparent;	/*background-image: linear-gradient(to right, white, rgba(255, 255, 255, 0.5) 70%, transparent);*/
 }
 
 .hbd_banner {
@@ -86,6 +94,7 @@ button._tri_btn {
 }
 
 .birthdayCard {
+	margin-top: 3rem;
 	position: relative;
 	width: 260px;
 	height: 400px;
@@ -144,11 +153,7 @@ button._tri_btn {
 }
 
 .happy {
-	top: 198px;
-}
-
-.toyou {
-	top: 123px;
+	top: 220px;
 }
 
 .bday {
@@ -156,7 +161,7 @@ button._tri_btn {
 	font-family: arial;
 	font-size: 35px;
 	text-align: center;
-	top: 163px;
+	top: 185px;
 }
 
 .wrap-deco {
@@ -669,9 +674,9 @@ p {
 }
 
 /* starting light  */
-
 ._startMsg {
 	position: absolute;
+	z-index: 1;
 	display: grid;
 	place-items: center;
 	font-family: 'Caveat', Helvetica, Arial, sans-serif;
@@ -878,7 +883,7 @@ p {
 }
 
 #lights {
-	font-size: 100px;
+	font-size: 84px;
 	text-align: center;
 	color: #000;
 }
@@ -1027,8 +1032,234 @@ p {
 	-moz-animation-timing-function: steps(2, start);
 }
 
-@media (max-width: 467px) {
+/* congrats fireworks css  */
+
+.title {
+  font-family: "Pacifico", cursive;
+  font-size: clamp(36px, 0.6rem, 100px);
+  color: #fff;
+  text-shadow: 6px 4px #735b13;
+}
+
+[class^=firework-] {
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  border-radius: 50%;
+}
+
+.firework-1 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+  top: 30%;
+  left: 20%;
+}
+
+.firework-2 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+  top: 40%;
+  left: 20%;
+}
+
+.firework-3 {
+  -webkit-animation: firework-md 1.2s both infinite;
+          animation: firework-md 1.2s both infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  top: 90%;
+  left: 75%;
+}
+
+.firework-4 {
+  -webkit-animation: firework-lg 1.2s both infinite;
+          animation: firework-lg 1.2s both infinite;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+  top: 45%;
+  left: 90%;
+}
+
+.firework-5 {
+  -webkit-animation: firework-md 1.2s both infinite;
+          animation: firework-md 1.2s both infinite;
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+  top: 35%;
+  left: 35%;
+}
+
+.firework-6 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+  top: 55%;
+  left: 80%;
+}
+
+.firework-7 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+  top: 80%;
+  left: 85%;
+}
+
+.firework-8 {
+  -webkit-animation: firework-lg 1.2s both infinite;
+          animation: firework-lg 1.2s both infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  top: 15%;
+  left: 15%;
+}
+
+.firework-9 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  top: 55%;
+  left: 30%;
+}
+
+.firework-10 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+  top: 75%;
+  left: 90%;
+}
+
+.firework-11 {
+  -webkit-animation: firework-md 1.2s both infinite;
+          animation: firework-md 1.2s both infinite;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+  top: 85%;
+  left: 25%;
+}
+
+.firework-12 {
+  -webkit-animation: firework-lg 1.2s both infinite;
+          animation: firework-lg 1.2s both infinite;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+  top: 35%;
+  left: 20%;
+}
+
+.firework-13 {
+  -webkit-animation: firework-sm 1.2s both infinite;
+          animation: firework-sm 1.2s both infinite;
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+  top: 55%;
+  left: 85%;
+}
+
+.firework-14 {
+  -webkit-animation: firework-md 1.2s both infinite;
+          animation: firework-md 1.2s both infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  top: 35%;
+  left: 70%;
+}
+
+.firework-15 {
+  -webkit-animation: firework-lg 1.2s both infinite;
+          animation: firework-lg 1.2s both infinite;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+  top: 85%;
+  left: 45%;
+}
+
+@-webkit-keyframes firework-sm {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 70% {
+    opacity: 1;
+  }
+  100% {
+    box-shadow: -0.5rem 0rem 0 #fff, 0.5rem 0rem 0 #fff, 0rem -0.5rem 0 #fff, 0rem 0.5rem 0 #fff, 0.35rem -0.35rem 0 #fff, 0.35rem 0.35rem 0 #fff, -0.35rem -0.35rem 0 #fff, -0.35rem 0.35rem 0 #fff;
+  }
+}
+
+@keyframes firework-sm {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 70% {
+    opacity: 1;
+  }
+  100% {
+    box-shadow: -0.5rem 0rem 0 #fff, 0.5rem 0rem 0 #fff, 0rem -0.5rem 0 #fff, 0rem 0.5rem 0 #fff, 0.35rem -0.35rem 0 #fff, 0.35rem 0.35rem 0 #fff, -0.35rem -0.35rem 0 #fff, -0.35rem 0.35rem 0 #fff;
+  }
+}
+@-webkit-keyframes firework-md {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 70% {
+    opacity: 1;
+  }
+  100% {
+    box-shadow: -0.7rem 0rem 0 #fff, 0.7rem 0rem 0 #fff, 0rem -0.7rem 0 #fff, 0rem 0.7rem 0 #fff, 0.49rem -0.49rem 0 #fff, 0.49rem 0.49rem 0 #fff, -0.49rem -0.49rem 0 #fff, -0.49rem 0.49rem 0 #fff;
+  }
+}
+@keyframes firework-md {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 70% {
+    opacity: 1;
+  }
+  100% {
+    box-shadow: -0.7rem 0rem 0 #fff, 0.7rem 0rem 0 #fff, 0rem -0.7rem 0 #fff, 0rem 0.7rem 0 #fff, 0.49rem -0.49rem 0 #fff, 0.49rem 0.49rem 0 #fff, -0.49rem -0.49rem 0 #fff, -0.49rem 0.49rem 0 #fff;
+  }
+}
+@-webkit-keyframes firework-lg {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 70% {
+    opacity: 1;
+  }
+  100% {
+    box-shadow: -0.9rem 0rem 0 #fff, 0.9rem 0rem 0 #fff, 0rem -0.9rem 0 #fff, 0rem 0.9rem 0 #fff, 0.63rem -0.63rem 0 #fff, 0.63rem 0.63rem 0 #fff, -0.63rem -0.63rem 0 #fff, -0.63rem 0.63rem 0 #fff;
+  }
+}
+@keyframes firework-lg {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 70% {
+    opacity: 1;
+  }
+  100% {
+    box-shadow: -0.9rem 0rem 0 #fff, 0.9rem 0rem 0 #fff, 0rem -0.9rem 0 #fff, 0rem 0.9rem 0 #fff, 0.63rem -0.63rem 0 #fff, 0.63rem 0.63rem 0 #fff, -0.63rem -0.63rem 0 #fff, -0.63rem 0.63rem 0 #fff;
+  }
+}
+
+/* responsive css */
+
+@media (max-width:467px) {
 	#lights {
-    	font-size: 52px;
+		font-size: 52px;
 	}
+
+	p {
+		font-size: 15px;
+	}
+
 }
