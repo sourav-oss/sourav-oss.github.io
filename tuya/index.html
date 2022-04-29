@@ -146,6 +146,8 @@
 		document.getElementById('switch').className = 'animate';
 		document.getElementById('trav').style.color='#ccf';
 		$('._tri_btn').show(10);
+		var audio = $('.song')[0];
+    	audio.play();
 	};
 </script>
 <script>
@@ -168,8 +170,8 @@ function showLigting() {
 	}, 2000);
 };
 $('._tri_btn').on('click', function(){
-	var audio = $('.song')[0];
-    audio.play();
+	// var audio = $('.song')[0];
+ //    audio.play();
     $('._tri_btn').hide(10);
     $('._startMsg').hide(10);
     $('.main_gift').show(10);

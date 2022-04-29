@@ -164,6 +164,10 @@ button._tri_btn {
 	top: 185px;
 }
 
+.toyou {
+	top: 143px;
+}
+
 .wrap-deco {
 	position: absolute;
 	top: -230px;
@@ -306,7 +310,7 @@ button._tri_btn {
 
 .inside-text {
 	position: relative;
-	top: -185px;
+	top: -200px;
 	transform: scale(0.7);
 }
 
