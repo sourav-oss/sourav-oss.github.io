@@ -1,10 +1,3 @@
-/**
-* Template Name: MyResume - v4.7.0
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -119,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 9997;
+  z-index: 100;
   transition: all 0.5s;
   padding: 15px;
   overflow-y: auto;
@@ -242,6 +235,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
+  z-index: 101;
   background: url("../img/hero-bg1.jpg") 0 -180px no-repeat;
   background-size: 100%;
   position: relative;
@@ -312,6 +306,14 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 20px;
     line-height: 24px;
   }
+}
+
+#resumeModal {
+  z-index: 101;
+}
+
+.modal-backdrop {
+  z-index: 99;
 }
 
 /*--------------------------------------------------------------
