@@ -1,219 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>Happy Birthday Ayantika ❤️</title>
+  <meta charset="UTF-8">
 	<link rel="icon" href="%PUBLIC_URL%/logo.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="A Birthday Message for Tuya" />
 	<meta property="og:type" content="E-Greeting" />
     <meta property="og:image" content="favicon.ico" />
     <meta name="author" content="Sourav Dutta">
-    <meta property="og:description" content="Wish you a very Happy Birthday Tuya">
-	<title>A Birthday Message for Tuya</title>
-	<link rel="stylesheet" href="style.css">
+    <meta property="og:description" content="Wish you a very very Happy Birthday Tuya ❤️">
+	<link rel="stylesheet" href="style-v1.css">
 </head>
 <body>
+    <canvas id="canvas"></canvas>
 
-	<canvas id="canvas"></canvas>
+<!-- Background Music -->
+<audio class="song1" controls loop>
+    <source src="happy-birthday.mp3"></source>
+       Your browser isn't invited for super fun audio time.
+</audio>
+<audio class="song2" controls loop>
+    <source src="hbd-2.mp3"></source>
+       Your browser isn't invited for super fun audio time.
+</audio>
 
-	<div class="_startMsg">
-		 <div class="bg"></div>
-        <div class="content">
-            <span id="switch">Click Me</span>
-        </div>
-        <div id="lights">Happy <br>
-            <span id="fade">Birthday </span><br>	
-            to you<br >
-            <span id ="trav">Ayantika</span>
-        </div>
-        <button class="_tri_btn" style="display: none">Click Me Again!</button>
-	</div>	
+<!-- Birthday Card -->
+<div class="card">
+  <div class="emojis">🎈🎉🎂😊</div>
+  <h1>Happy Birthday Tuya❤️</h1>
+  <p>Wishing you a day filled with love, laughter, and joy.<br> You deserve all the wonderful things life has to offer!</p>
+  <button class="button" id="switch" onclick="showSurprise()">Now Celebrate!</button>
+</div>
 
-	<div class="main_gift" style="display: none;">
-		
-		<div class="lighting lgt1">
-			<div class="bulb-holder">
-				<div class="bulb bulb_yellow"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_red"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_blue"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_green"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_pink"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_orange"></div>
-			</div>
-		</div>
+<!-- Surprise Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>🎉 Dear Puchi🌹</h2>
+    <p>Happy birthday!🥳 </p>
+    <p>I hope your day is filled with lots of love and laughter. May all your birthday wishes come true! <br>I am brimming with pride to have such a beautiful, wonderful woman — strong, charming, and courageous — by my side. I truly feel lucky to have you in my life.</p>
+    <p>Happy birthday darling. <br>Stay Happy, Stay Blessed. 😇</p>
+    <p>Sending lots of love, laughter, and sparkles your way! ✨</p>
+    <p class="name">❤️ Your Puchi</p>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
 
-		<div class="hbd_banner" style="display: none">
-			<img src="banner.png" class="bannar bannar-come">
-		</div>
-
-		<div class="birthdayCard" style="display: none;">
-		    <div class="cardFront">
-		        <div class="front-text">
-		            <h3 class="happy" style="margin-bottom: 0;">HAPPY</h3>
-		            <h2 class="happy" style="margin: 0;">BIRTHDAY</h2>
-		            <h3 class="bday">AYANTIKA! </h3>
-		            <!-- 🌹🥳🎂🍾🎉🎁❤️🌹 -->
-		        </div>
-		        <div class="wrap-deco">
-		            <div class="decorations"></div>
-		            <div class="decorationsTwo"></div>
-		        </div>
-		        <div class="wrap-decoTwo">
-		            <div class="decorations"></div>
-		            <div class="decorationsThree"></div>
-		        </div>
-		        <div class="plate">
-		            <div class="cake"></div>
-		            <div class="flame"></div>
-		        </div>
-		    </div>
-		    <div class="cardInside">
-		        <div class="inside-text">
-		            <h3 class="happy">HAPPY</h3>
-		            <h2 class="bday">BIRTHDAY</h2>
-		            <h3 class="toyou">to you!</h3>
-		        </div>
-		        <div class="wishes">
-		            <p>Dear Puchi 🌹,</p>
-		            <p>Happy birthday!!🥳 I hope your day is filled with lots of love & laughter. May all of your birthday wishes come true. <br>I am brimming with pride for having such a beautiful & wonderful woman as strong, charming & courageous as you by my side. I got really lucky to have you in my life. <br>Happy birthday darling. <br>Stay Happy, Stay Blessed. 😇</p>
-		            <p class="name">❤️ Your Puchi</p>
-		        </div>
-		    </div>
-		</div>
-
-		<div class="firework-1"></div>
-		<div class="firework-2"></div>
-		<div class="firework-3"></div>
-		<div class="firework-4"></div>
-		<div class="firework-5"></div>
-		<div class="firework-6"></div>
-		<div class="firework-7"></div>
-		<div class="firework-8"></div>
-		<div class="firework-9"></div>
-		<div class="firework-10"></div>
-		<div class="firework-11"></div>
-		<div class="firework-12"></div>
-		<div class="firework-13"></div>
-		<div class="firework-14"></div>
-		<div class="firework-15"></div>
-		<div class="title">Congratulations 🎉</div>
-
-		<div class="lighting lgt2">
-			<div class="bulb-holder">
-				<div class="bulb bulb_yellow"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_red"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_blue"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_green"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_pink"></div>
-			</div>
-			<div class="bulb-holder">
-				<div class="bulb bulb_orange"></div>
-			</div>
-		</div>
-	</div>
-
-	<audio class="song" controls loop>
-        <source src="hbd.mp3"></source>
-	   	Your browser isn't invited for super fun audio time.
-    </audio>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <script>
-	var toggle = document.getElementById('switch');
-	toggle.onclick = function() {
-	  	this.innerText='1st May,';
-	 	this.style.cursor='none';
-	  	this.style.color='#bef'; 
-	   	document.getElementById('lights').className = 'animate';
-		document.getElementById('switch').className = 'animate';
-		document.getElementById('trav').style.color='#ccf';
-		$('._tri_btn').show(10);
-		var audio = $('.song')[0];
-    	audio.play();
-	};
-</script>
-<script>
-// $( window ).load(function(){
-function showLigting() {
-	$('.hbd_banner').show(10);
-	$('.bulb_yellow').addClass('_light bulb-glow-yellow');
-	$('.bulb_red').addClass('_light bulb-glow-red');
-	$('.bulb_blue').addClass('_light bulb-glow-blue');
-	$('.bulb_green').addClass('_light bulb-glow-green');
-	$('.bulb_pink').addClass('_light bulb-glow-pink');
-	$('.bulb_orange').addClass('_light bulb-glow-orange');
-	setTimeout(function(){
-	 	$('.bulb_yellow').addClass('bulb-glow-yellow-after');
-		$('.bulb_red').addClass('bulb-glow-red-after');
-		$('.bulb_blue').addClass('bulb-glow-blue-after');
-		$('.bulb_green').addClass('bulb-glow-green-after');
-		$('.bulb_pink').addClass('bulb-glow-pink-after');
-		$('.bulb_orange').addClass('bulb-glow-orange-after');
-	}, 2000);
-};
-$('._tri_btn').on('click', function(){
-	// var audio = $('.song')[0];
- //    audio.play();
-    $('._tri_btn').hide(10);
-    $('._startMsg').hide(10);
-    $('.main_gift').show(10);
-    showLigting();
-    setTimeout(function(){
-    	$('.birthdayCard').show(10);
-    },2000)
-});
-$('.hbd_banner').on('click', function(){
-	$('.main_gift').hide(10);
-	$('._startMsg').show(10);
-	$('._tri_btn').show(10);
-});	
+  // Create Confetti
+  for (let i = 0; i < 80; i++) {
+    let confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+    document.body.appendChild(confetti);
+  }
+
+  var audio1 = $('.song1')[0];
+  var audio2 = $('.song2')[0];
+
+  function showSurprise() {
+    document.getElementById('popup').style.display = 'flex';
+    audio1.play();
+    audio2.play();
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+    audio1.pause();
+    audio2.pause();
+  }
 </script>
 
 <script>
-    document.addEventListener('contextmenu', function(e){
-        e.preventDefault();
-    });
-    document.onkeydown = function(e) {
-        if(event.keyCode == 123) {
-            return false;
-        }
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-            return false;
-        }
-    }
-</script>
+    // show fireworks script 
 
-<script>
 	window.addEventListener("resize", resizeCanvas, false);
 	window.addEventListener("DOMContentLoaded", onLoad, false);
 
