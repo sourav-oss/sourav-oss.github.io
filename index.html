@@ -496,7 +496,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="assets/img/pkg.jpg" class="img-fluid" alt="SBIG (Customer Portal)">
+              <img src="https://picsum.photos/id/1011/400/300?grayscale&blur=2" class="img-fluid" alt="SBIG (Customer Portal)">
               <div class="portfolio-info">
                 <h4>SBIG (Customer Portal) - Insurance Products Buying Journey</h4>
                 <p>React.js, Next.js, Redux</p>
@@ -508,7 +508,7 @@
           </div>
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="assets/img/pkg.jpg" class="img-fluid" alt="AMATrack (ESTEPS)">
+              <img src="https://picsum.photos/id/1015/400/300?grayscale&blur=2" class="img-fluid" alt="AMATrack (ESTEPS)">
               <div class="portfolio-info">
                 <h4>AMATrack (ESTEPS) – Smart Transit Management Platform</h4>
                 <p>React.js, Android Studio</p>
@@ -520,7 +520,7 @@
           </div>
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="assets/img/pkg.jpg" class="img-fluid" alt="ITC - Audit 360">
+              <img src="https://picsum.photos/id/1025/400/300?grayscale&blur=2" class="img-fluid" alt="ITC - Audit 360">
               <div class="portfolio-info">
                 <h4>ITC - Audit 360 (Audit Management System)</h4>
                 <p>React.js, Java Spring</p>
@@ -545,9 +545,17 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <a href="https://www.npmjs.com/package/reactjs-alert" target="_blank" title="Sourav Dutta's npm packages">
-              <img src="assets/img/pkg.jpg" alt="pkg" draggable="false" />
-            </a>
+            <div id="reactjs-alert-package" class="npm-package-info" style="background:#f8f9fa;border-radius:8px;padding:24px 18px 18px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);text-align:left;min-height:120px;">
+              <div style="font-size:1.3rem;font-weight:600;margin-bottom:4px;">
+                <a id="npm-package-title" href="https://www.npmjs.com/package/reactjs-alert" target="_blank" rel="noopener noreferrer" style="color:#0070f3;text-decoration:none;">reactjs-alert</a>
+              </div>
+              <div id="npm-package-desc" style="font-size:1rem;color:#333;margin-bottom:8px;">Loading package info...</div>
+              <div style="font-size:0.97rem;color:#555;">
+                <span id="npm-package-version"></span>
+                <span id="npm-package-date" style="margin-left:12px;"></span>
+              </div>
+              <div id="npm-package-usage" style="margin-top:10px;font-size:0.95rem;background:#e9ecef;padding:8px 10px;border-radius:4px;color:#222;display:none;"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -586,7 +594,7 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="" method="post" role="form" class="php-email-form">
+            <form role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
@@ -603,7 +611,7 @@
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
-                <div class="error-message"></div>
+                <!-- <div class="error-message"></div> -->
                 <div class="sent-message">
                   Your message has been sent. Thank you!
                 </div>
@@ -612,6 +620,7 @@
                 <button type="submit">Send Message</button>
               </div>
             </form>
+            <div id="form-alert" style="display:none;margin-top:10px;" class="alert alert-success"></div>
           </div>
         </div>
       </div>
@@ -801,6 +810,83 @@
         return false;
       }
     };
+  </script>
+
+  <script>
+    // Fetch reactjs-alert info from npm registry
+    fetch('https://registry.npmjs.org/reactjs-alert')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('npm-package-desc').textContent = data.description || 'No description available.';
+        document.getElementById('npm-package-version').textContent = 'Latest version: ' + (data['dist-tags']?.latest || 'N/A');
+        const lastTime = data.time && data.time[data['dist-tags']?.latest];
+        if (lastTime) {
+          const d = new Date(lastTime);
+          document.getElementById('npm-package-date').textContent = 'Last published: ' + d.toLocaleDateString();
+        }
+        // Show usage snippet
+        const usage = `npm i reactjs-alert`;
+        const usageDiv = document.getElementById('npm-package-usage');
+        usageDiv.textContent = usage;
+        usageDiv.style.display = 'block';
+      })
+      .catch(() => {
+        document.getElementById('npm-package-desc').textContent = 'Failed to load package info.';
+      });
+  </script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script>
+    (function() {
+      emailjs.init('gzVAna8vZteWWAJql');
+    })();
+
+    document.querySelector('.php-email-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Validate form (basic)
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var subject = document.getElementById('subject').value.trim();
+      var message = document.querySelector('textarea[name="message"]').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showAlert('Please fill in all fields.', 'danger');
+        return;
+      }
+
+      // Show loading
+      var loadingDiv = document.querySelector('.php-email-form .loading');
+      loadingDiv.style.display = 'block';
+
+      // Send email via EmailJS
+      emailjs.send('service_1kx81lx', 'template_nlhxi27', {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message
+      })
+      .then(function(response) {
+        showAlert('Thank you for reaching out! Your message has been sent.', 'success');
+        document.querySelector('.php-email-form').reset();
+        loadingDiv.style.display = 'none';
+      }, function(error) {
+        showAlert('Oops! Something went wrong. Please try again later.', 'danger');
+        loadingDiv.style.display = 'none';
+      });
+    });
+
+    function showAlert(msg, type) {
+      var alertDiv = document.getElementById('form-alert');
+      alertDiv.textContent = msg;
+      alertDiv.className = 'alert alert-' + type;
+      alertDiv.style.display = 'block';
+      setTimeout(function() {
+        alertDiv.style.display = 'none';
+      }, 5000);
+    }
   </script>
 </body>
 
